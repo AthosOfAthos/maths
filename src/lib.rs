@@ -1,6 +1,9 @@
 //! Bespoke vector math library
 //!
 
+mod matrix4;
+pub use matrix4::Matrix4;
+
 mod quaternion;
 pub use quaternion::Quaternion;
 
