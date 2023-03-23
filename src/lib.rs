@@ -1,6 +1,9 @@
 //! Bespoke vector math library
 //!
 
+mod matrix3;
+pub use matrix3::Matrix3;
+
 mod matrix4;
 pub use matrix4::Matrix4;
 
