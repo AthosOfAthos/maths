@@ -1,5 +1,4 @@
-mod f32_ops;
-mod vector2_ops;
+use std::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
 
 /// A single precision 2D Vector.
 /// This struct is [repr(C)] with an alignment of 8 to satisfy std140
@@ -34,6 +33,110 @@ impl Vector2 {
             x: self.x / self.magnitude(),
             y: self.y / self.magnitude(),
         }
+    }
+}
+
+// F32 OPS
+impl Mul<f32> for Vector2 {
+    type Output = Vector2;
+
+    fn mul(self, rhs: f32) -> Self::Output {
+        Vector2 {
+            x: self.x * rhs,
+            y: self.y * rhs,
+        }
+    }
+}
+impl MulAssign<f32> for Vector2 {
+    fn mul_assign(&mut self, rhs: f32) {
+        self.x *= rhs;
+        self.y *= rhs;
+    }
+}
+
+impl Div<f32> for Vector2 {
+    type Output = Vector2;
+
+    fn div(self, rhs: f32) -> Self::Output {
+        Vector2 {
+            x: self.x / rhs,
+            y: self.y / rhs,
+        }
+    }
+}
+impl DivAssign<f32> for Vector2 {
+    fn div_assign(&mut self, rhs: f32) {
+        self.x /= rhs;
+        self.y /= rhs;
+    }
+}
+
+// VECTOR2 OPS
+impl Add<Vector2> for Vector2 {
+    type Output = Vector2;
+
+    fn add(self, rhs: Vector2) -> Self::Output {
+        Vector2 {
+            x: self.x + rhs.x,
+            y: self.y + rhs.y,
+        }
+    }
+}
+impl AddAssign<Vector2> for Vector2 {
+    fn add_assign(&mut self, rhs: Vector2) {
+        self.x += rhs.x;
+        self.y += rhs.y;
+    }
+}
+
+impl Sub<Vector2> for Vector2 {
+    type Output = Vector2;
+
+    fn sub(self, rhs: Vector2) -> Self::Output {
+        Vector2 {
+            x: self.x - rhs.x,
+            y: self.y - rhs.y,
+        }
+    }
+}
+impl SubAssign<Vector2> for Vector2 {
+    fn sub_assign(&mut self, rhs: Vector2) {
+        self.x -= rhs.x;
+        self.y -= rhs.y;
+    }
+}
+
+impl Mul<Vector2> for Vector2 {
+    type Output = Vector2;
+
+    fn mul(self, rhs: Vector2) -> Self::Output {
+        Vector2 {
+            x: self.x * rhs.x,
+            y: self.y * rhs.y,
+        }
+    }
+}
+impl MulAssign<Vector2> for Vector2 {
+    fn mul_assign(&mut self, rhs: Vector2) {
+        self.x *= rhs.x;
+        self.y *= rhs.y;
+    }
+}
+
+impl Div<Vector2> for Vector2 {
+    type Output = Vector2;
+
+    fn div(self, rhs: Vector2) -> Self::Output {
+        Vector2 {
+            x: self.x / rhs.x,
+            y: self.y / rhs.y,
+        }
+    }
+}
+impl DivAssign<Vector2> for Vector2 {
+    fn div_assign(&mut self, rhs: Vector2) {
+        self.x /= rhs.x;
+        self.y /= rhs.y;
     }
 }
 
