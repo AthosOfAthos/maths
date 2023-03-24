@@ -1,3 +1,4 @@
+use crate::Vector2;
 use std::hash::{Hash, Hasher};
 use std::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
 
@@ -27,6 +28,15 @@ impl PartialEq for IVector2 {
     }
 }
 impl Eq for IVector2 {}
+
+impl From<Vector2> for IVector2 {
+    fn from(value: Vector2) -> Self {
+		IVector2 {
+			x: value.x as i32,
+			y: value.y as i32,
+		}
+    }
+}
 
 impl Hash for IVector2 {
     fn hash<H: Hasher>(&self, state: &mut H) {

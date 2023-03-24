@@ -1,3 +1,4 @@
+use crate::IVector2;
 use std::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
 
 /// A single precision 2D Vector.
@@ -32,6 +33,15 @@ impl Vector2 {
         Vector2 {
             x: self.x / self.magnitude(),
             y: self.y / self.magnitude(),
+        }
+    }
+}
+
+impl From<IVector2> for Vector2 {
+    fn from(value: IVector2) -> Self {
+        Vector2 {
+            x: value.x as f32,
+            y: value.y as f32,
         }
     }
 }
