@@ -1,4 +1,5 @@
-use std::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
+use core::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
+use libm::sqrtf;
 
 #[repr(C)]
 #[repr(align(16))]
@@ -20,7 +21,7 @@ impl Vector3 {
     pub const BACK: Vector3 = Vector3 { x: 0.0, y: 0.0, z: -1.0 };
 
     pub fn magnitude(&self) -> f32 {
-        ( (self.x * self.x) + (self.y * self.y) + (self.z * self.z) ).sqrt()
+        sqrtf((self.x * self.x) + (self.y * self.y) + (self.z * self.z))
     }
 
     pub fn normalize(&mut self) {

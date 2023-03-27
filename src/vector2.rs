@@ -1,5 +1,6 @@
 use crate::IVector2;
-use std::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
+use core::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
+use libm::sqrtf;
 
 /// A single precision 2D Vector.
 /// This struct is [repr(C)] with an alignment of 8 to satisfy std140
@@ -20,7 +21,7 @@ impl Vector2 {
     pub const RIGHT: Vector2 = Vector2 { x: 1.0, y: 0.0 };
 
     pub fn magnitude(&self) -> f32 {
-        ( (self.x * self.x) + (self.y * self.y) ).sqrt()
+        sqrtf((self.x * self.x) + (self.y * self.y))
     }
 
     pub fn normalize(&mut self) {

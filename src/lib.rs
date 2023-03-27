@@ -1,3 +1,4 @@
+#![no_std]
 //! Bespoke vector math library
 //!
 

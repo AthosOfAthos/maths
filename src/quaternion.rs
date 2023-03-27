@@ -1,5 +1,6 @@
-use std::ops::{Mul, MulAssign};
 use crate::Vector3;
+use core::ops::{Mul, MulAssign};
+use libm::{sinf, cosf};
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug, PartialEq)]
@@ -14,17 +15,17 @@ impl Quaternion {
     pub const IDENTITY: Quaternion = Quaternion { x: 0.0, y: 0.0, z: 0.0, w: 1.0 };
 
     pub fn from_euler(euler: Vector3) -> Quaternion {
-        const HALF_TO_RAD: f32 = std::f32::consts::PI / 360.0;
+        const HALF_TO_RAD: f32 = core::f32::consts::PI / 360.0;
         let x = euler.x * HALF_TO_RAD;
         let y = euler.y * HALF_TO_RAD;
         let z = euler.z * HALF_TO_RAD;
 
-        let sx = x.sin();
-        let cx = x.cos();
-        let sy = y.sin();
-        let cy = y.cos();
-        let sz = z.sin();
-        let cz = z.cos();
+        let sx = sinf(x);
+        let cx = cosf(x);
+        let sy = sinf(y);
+        let cy = cosf(y);
+        let sz = sinf(z);
+        let cz = cosf(z);
 
         Quaternion {
             x: sx * cy * cz - cx * sy * sz,

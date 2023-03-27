@@ -1,5 +1,6 @@
 use crate::{Quaternion, Vector3};
-use std::ops::Mul;
+use core::ops::Mul;
+use libm::tanf;
 
 #[repr(C)]
 #[repr(align(16))]
@@ -32,7 +33,7 @@ impl Matrix4 {
     };
     
     pub fn from_perspective(fov: f32, aspect: f32, clip_near: f32, clip_far: f32) -> Matrix4 {
-        let f = 1.0 / (fov / 2.0).tan();
+        let f = 1.0 / tanf(fov / 2.0);
         let fa = f / aspect;
         let nf = 1.0 / (clip_near - clip_far);
 
