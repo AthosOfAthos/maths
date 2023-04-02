@@ -4,6 +4,7 @@ use libm::{sinf, cosf};
 
 #[repr(C)]
 #[derive(Copy, Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Quaternion {
     pub x: f32,
     pub y: f32,

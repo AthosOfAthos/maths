@@ -5,6 +5,7 @@ use libm::tanf;
 #[repr(C)]
 #[repr(align(16))]
 #[derive(Copy, Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Matrix4 {
     pub m00: f32,
     pub m01: f32,

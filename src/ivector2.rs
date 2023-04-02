@@ -4,6 +4,7 @@ use core::ops::{Add, AddAssign, Sub, SubAssign, Mul, MulAssign, Div, DivAssign};
 
 #[repr(C, align(8))]
 #[derive(Clone, Copy, Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct IVector2 {
 	pub x: i32,
 	pub y: i32,

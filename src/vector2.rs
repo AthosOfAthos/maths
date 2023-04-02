@@ -7,6 +7,7 @@ use libm::sqrtf;
 #[repr(C)]
 #[repr(align(8))]
 #[derive(Copy, Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Vector2 {
     pub x: f32,
     pub y: f32,

@@ -4,5 +4,10 @@ version = "0.0.1"
 edition = "2021"
 publish = false
 
+[features]
+default = ["serde"]
+serde = ["dep:serde"]
+
 [dependencies]
 libm = "0.2.*"
+serde = { version = "1.0.*", default_features = false, features = ["derive"], optional = true }

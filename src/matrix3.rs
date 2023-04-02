@@ -2,6 +2,7 @@ use crate::{Vector2, Vector3};
 
 #[repr(C, align(16))]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Matrix3 {
 	pub x: Vector3,
 	pub y: Vector3,

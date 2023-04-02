@@ -4,6 +4,7 @@ use libm::sqrtf;
 #[repr(C)]
 #[repr(align(16))]
 #[derive(Copy, Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Vector3 {
     pub x: f32,
     pub y: f32,
